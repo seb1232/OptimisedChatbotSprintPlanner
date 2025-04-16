@@ -1531,13 +1531,17 @@ There are {len(df)} tasks. Component expertise is as follows:\n"""
         ]
         st.rerun()
     # 📥 Download reassigned tasks as CSV
-    if "results" in st.session_state and "df" in st.session_state.results:
-        csv_data = st.session_state.results["df"].to_csv(index=False).encode("utf-8")
-        st.download_button(
-            label="📥 Download Updated Task Assignments (CSV)",
-            data=csv_data,
-            file_name="updated_task_assignments.csv",
-            mime="text/csv"
+   # 📥 Download reassigned tasks as CSV
+results = st.session_state.get("results")
+if results is not None and isinstance(results, dict) and "df" in results:
+    csv_data = results["df"].to_csv(index=False).encode("utf-8")
+    st.download_button(
+        label="📥 Download Updated Task Assignments (CSV)",
+        data=csv_data,
+        file_name="updated_task_assignments.csv",
+        mime="text/csv"
+    )
+
         )
 
 
