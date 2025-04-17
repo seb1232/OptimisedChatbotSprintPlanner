@@ -1497,52 +1497,6 @@ There are {len(df)} tasks. Component expertise is as follows:\n"""
                 message_placeholder.markdown(full_response)
                 st.session_state.ai_messages.append({"role": "assistant", "content": full_response})
 
-    # 🔁 Buttons
-    st.markdown("### Quick Actions")
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        if st.button("Analyze Priority Distribution"):
-            st.session_state.ai_messages.append({
-                "role": "user",
-                "content": "Analyze the priority distribution across team members and suggest improvements"
-            })
-            st.rerun()
-
-    with col2:
-        if st.button("Check Component Balance"):
-            st.session_state.ai_messages.append({
-                "role": "user",
-                "content": "Check if component assignments match team member expertise"
-            })
-            st.rerun()
-
-    with col3:
-        if st.button("Fix Component Mismatches"):
-            st.session_state.ai_messages.append({
-                "role": "user",
-                "content": "Fix component mismatches"
-            })
-            st.rerun()
-
-    if st.button("Clear Conversation"):
-        st.session_state.ai_messages = [
-            {"role": "assistant", "content": "Hello! I'm your sprint planning assistant. How can I help you with your task assignments today?"}
-        ]
-        st.rerun()
-    # 📥 Download reassigned tasks as CSV
-    # 📥 Download reassigned tasks as CSV
-    results = st.session_state.get("results")
-    if results is not None and isinstance(results, dict) and "df" in results:
-        csv_data = results["df"].to_csv(index=False).encode("utf-8")
-        st.download_button(
-            label="📥 Download Updated Task Assignments (CSV)",
-            data=csv_data,
-            file_name="updated_task_assignments.csv",
-            mime="text/csv"
-        )
-
-
 
 # Footer
 st.markdown("---")
