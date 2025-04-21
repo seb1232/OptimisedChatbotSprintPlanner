@@ -1502,6 +1502,6 @@ There are {len(df)} tasks. Component expertise is as follows:\n"""
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #9e9e9e; font-size: 12px;">
-    Sprint Task Planner - A tool for balanced, sprint-based task assignment across team members
+    Sprint Task Planner - A tool for balanced, sprint-based task assignment across team members along with Aritificial Intelligence for insights and Suggestions
 </div>
 """, unsafe_allow_html=True)
